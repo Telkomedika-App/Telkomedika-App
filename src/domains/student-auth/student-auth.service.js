@@ -40,7 +40,7 @@ class StudentAuthService extends BaseService {
   }
 
   async register(info) {
-    const { name, email, password } = info;
+    const { name, email, password, phone } = info;
 
     const student = await this.db.student.findUnique({
       where: { email },
@@ -55,6 +55,7 @@ class StudentAuthService extends BaseService {
         name,
         email,
         password: await hashPassword(password),
+        phone
       },
     });
 

@@ -35,6 +35,13 @@ const registerSchema = Joi.object({
       "string.empty": "Password confirmation is required.",
       "any.only": "Password confirmation does not match password.",
     }),
+  phone: Joi.string()
+    .required()
+    .pattern(/^[0-9+\-() ]{8,20}$/)
+    .allow("")
+    .messages({
+      "string.pattern.base": "Phone number must be 8-20 digits and can include +, -, (, ) or spaces.",
+    }),
 });
 
 export { loginSchema, registerSchema };
